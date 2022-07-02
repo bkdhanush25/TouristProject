@@ -1,42 +1,76 @@
 <%- include('./partials/header') %>
 <main>
-    <section id="search">
+    <!-- <section>
         <img src="/2.jpg" alt="India Gate" class="intro-img">
+    </section> -->
+    <section>
+        <br><br>
+        <h1 class="center">Book Tours in India</h1>
         <form action="/" class="get" method="get" autocomplete="off">
-            <input type="text" name="search" id="search" placeholder="Search for Tours in India" list="places">
+            <input type="text" name="search" id="search" placeholder="Search for Tours in India" onkeyup="liveSearch()">
             <button type="submit">Go!</button>
-            <datalist id="places">
-                <option value="Default">Default</option>
-                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                <option value="Assam">Assam</option>
-                <option value="Bihar">Bihar</option>
-                <option value="Chhattisgarh">Chhattisgarh</option>
-                <option value="Goa">Goa</option>
-                <option value="Gujarat">Gujarat</option>
-                <option value="Haryana">Haryana</option>
-                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                <option value="Jharkhand">Jharkhand</option>
-                <option value="Karnataka">Karnataka</option>
-                <option value="Kerala">Kerala</option>
-                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Manipur">Manipur</option>
-                <option value="Meghalaya">Meghalaya</option>
-                <option value="Mizoram">Mizoram</option>
-                <option value="Nagaland">Nagaland</option>
-                <option value="Odisha">Odisha</option>
-                <option value="Punjab">Punjab</option>
-                <option value="Rajasthan">Rajasthan</option>
-                <option value="Sikkim">Sikkim</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
-                <option value="Telangana">Telangana</option>
-                <option value="Tripura">Tripura</option>
-                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                <option value="Uttarakhand">Uttarakhand</option>
-                <option value="West Bengal">West Bengal</option>
-            </datalist>
         </form>
+        <h2 class="center">Popular Destinations</h2>
+        <br>
+        <p class="showing center"></p>
+        <br>
+        <div class="cards">
+            <% locals.cities.forEach(function(city) { %>
+                <a href="/city/<%= city._id %>" class="card-link" date-state="<%- city.state %>" data-city="<%= city.city %>">    
+                    <div class="card">
+                        <h3><%= city.city %>, <%= city.state %></h3>
+                    </div>
+                </a>
+            <% }); %>
+        </div>
     </section>
+    <script>
+        const search = document.getElementById('search');
+        const showing = document.querySelector('.showing');
+        const cards = document.querySelectorAll('.card-link');
+        const liveSearch = (e) => {
+            // filter the results based on the input
+            var filter = search.value.toUpperCase();
+            cards.forEach(function(card) {
+                var city = card.getAttribute('data-city');
+                var state = card.getAttribute('date-state');
+                if (city.toUpperCase().includes(filter) || state.toUpperCase().includes(filter)) {
+                    card.classList.remove('hide');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+            const hidden = calcHidden();
+            if (cards.length === hidden) {
+                        showing.innerHTML = 'No results found';
+            } else {
+                showing.innerHTML = 'Showing ' + (cards.length - hidden) + ' of ' + cards.length + ' results';
+            }
+
+        };
+
+        const calcHidden = () => {
+            let hidden = 0;
+            cards.forEach(function(card) {
+                if (card.classList.contains('hide')) {
+                    hidden++;
+                }
+            });
+            return hidden;
+        };
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if(search.value === '') {
+                return;
+            }
+            cards.forEach(function(card) {
+                if(!card.classList.contains('hide')) {
+                    window.location.href = card.href;
+                    return;
+                }
+            });
+        });
+    </script>
 </main>
 <%- include('./partials/footer') %> 

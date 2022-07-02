@@ -1,0 +1,29 @@
+<%- include('./partials/header') %>
+<main>
+    <section>
+      <h1 class="center">Admin Dashboard</h1>
+      <div class="btn-group">
+        <a href="/dashboard/add-city"><button>Add New City</button></a>
+        <a href="/dashboard/add-place"><button>Add New Attraction</button></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tour Bookings</h2>
+      <% if (locals.bookings && locals.bookings.length > 0) { %>
+        <div class="list">
+        <% bookings.forEach((booking) => { %>
+          <div class="list-item">
+            <p><span class="bold">Name</span> : <%= booking.name %> </p>
+            <p><span class="bold">Email</span> : <%= booking.email %> </p>
+            <p><span class="bold">Phone</span> : <%= booking.phone %> </p>
+            <p><span class="bold">Date</span> : <%= booking.date %> </p>
+            <p><span class="bold">Place</span> : <%= booking.place.name %></p>
+          </div>
+        <% }) %> 
+        </div>
+      <% } else { %>
+        <p class="center">No bookings found</p>
+      <% } %>
+    </section>
+</main>
+<%- include('./partials/footer') %> 

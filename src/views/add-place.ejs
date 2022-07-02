@@ -1,0 +1,24 @@
+<%- include('./partials/header') %>
+<main>
+    <section>
+        <% if (locals.cities.length > 0) { %>
+            <form method="post" class="post">
+                <h2>Add a New Tourist Attraction</h2>
+                <input type="text" name="name" id="name" placeholder="Place Name" required>
+                <select name="city" id="city" required>
+                    <option>Choose a City</option>
+                    <% locals.cities.forEach(function(city) { %>
+                        <option value="<%= city._id %>"><%= city.city %></option>
+                    <% }); %>
+                </select>
+                <textarea name="description" id="description" placeholder="Add Description" required></textarea>
+                <input type="submit" value="Submit">
+            </form>
+        <% } else { %>
+            <h2>No Cities Found</h2>
+            <p>You need to add a city before you can add a place.</p>
+            <a href="/dashboard/add-city"><button>Add New City</button></a>
+        <% } %>
+    </section>
+</main>
+<%- include('./partials/footer') %> 

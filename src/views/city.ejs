@@ -1,0 +1,31 @@
+<%- include('./partials/header') %>
+<main>
+    <section>
+      <h1><%= city.city %> </h1>
+      <br>
+      <p><%= city.state %> </p>
+    </section>
+    <section>
+        <h2>Places to Visit in <%= city.city %> </h2>
+        <br>
+        <% if (locals.places && locals.places.length > 0) { %>
+         <div class="list">
+            <% locals.places.forEach(function(place) { %>
+                <div class="list-item">
+                    <div>
+                        <h3><%= place.name %></h3>
+                        <br>
+                        <p><%= place.description %></p>
+                    </div>
+                    <div>
+                        <a href="/book-tour?place=<%= place._id %>"><button class="btn-mini">Book Tour</button></a>
+                    </div>
+                </div>
+            <% }); %>
+         </div>
+        <% } else { %>
+            <p class="center">No places to visit found</p>
+        <% } %>
+    </section>
+</main>
+<%- include('./partials/footer') %> 

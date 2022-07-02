@@ -1,0 +1,15 @@
+<%- include('./partials/header') %>
+<main>
+    <section>
+        <form method="post" class="post" autocomplete="off">
+            <h1 class="center">Add Your Details</h1>
+            <br>
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="text" name="phone" id="phone" placeholder="Phone No" max="10">
+            <input type="date" name="date" id="date">
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+</main>
+<%- include('./partials/footer') %> 
