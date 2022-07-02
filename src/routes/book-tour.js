@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { name, email, phone, date } = req.body;
+    const { money, time } = req.body;
     const { place } = req.query;
-    console.log(name, email, phone, date, place);
-    await BookingSchema.create({ name, email, phone, place, date });
+    console.log(money, time, place);
+    await BookingSchema.create({ money, time, place});
     res.redirect('/');
 });
 

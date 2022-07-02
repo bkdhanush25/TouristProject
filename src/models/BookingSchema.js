@@ -2,16 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BookingSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    phone: {
-        type: String,
+    money: {
+        type: Number,
         required: true
     },
     place: {
@@ -19,8 +11,8 @@ const BookingSchema = new Schema({
         ref: 'Place',
         required: true
     },
-    date: {
-        type: Date,
+    time: {
+        type: Number,
         required: true
     }
 }, { timestamps: true });
