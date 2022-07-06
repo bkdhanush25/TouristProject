@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines":{
+    "node": "v16.14.2"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.1",
