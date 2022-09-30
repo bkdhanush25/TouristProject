@@ -19,6 +19,14 @@ app.use(cookieParser());
 
 app.use(router);
 
+app.get("/about", function(req, res) {
+    res.render("about");
+});
+
+app.get("/contactus", function(req, res) {
+    res.render("contactus");
+});
+
 app.listen(PORT, () => {
     console.log(`Server Running in ${HOST}:${PORT} `);
 });
