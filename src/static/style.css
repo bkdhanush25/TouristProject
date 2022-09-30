@@ -222,3 +222,28 @@ span.bold {
     left:170px;
     top:15px;
 }
+
+.weather-image{
+    position: relative;
+    bottom:20px;
+    padding-right: 50px;
+}
+
+.city-heading{
+    display:flex;
+    justify-content: space-between;
+}
+
+.weather-heading{
+    display:flex;
+}
+
+.temperature{
+    position: relative;
+    top:15px;
+}
+.state{
+    font-size: 20px;
+    position: relative;
+    bottom: 10px;
+}

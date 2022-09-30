@@ -1,12 +1,18 @@
 <%- include('./partials/header') %>
 <main>
     <section>
-      <h1><%= city.city %> </h1>
+        <div class="city-heading">
+            <div class=""><h1><%= city.city %> </h1></div>
+            <div class="weather-heading">
+                <div class=""><img class="weather-image"src="<%= imageURL %>" alt=""></div> 
+                <div class="temperature"><h2><%= temp %>° Celcius</h2></div>
+            </div>
+        </div>
       <br>
-      <p><%= city.state %> </p>
+      <p class="state"> <%= city.state %> </p>
     </section>
     <section>
-        <h2>Tourists Spots to explore in <%= city.city %> </h2>
+        <h2>Places to Visit in <%= city.city %> </h2>
         <br>
         <% if (locals.places && locals.places.length > 0) { %>
          <div class="list">
@@ -18,7 +24,7 @@
                         <p><%= place.description %></p>
                     </div>
                     <div>
-                        <a href="/book-tour?place=<%= place._id %>"><button class="btn-mini">Plan Tour</button></a>
+                        <a href="/book-tour?place=<%= place._id %>"><button class="btn-mini">Book Tour</button></a>
                     </div>
                 </div>
             <% }); %>
