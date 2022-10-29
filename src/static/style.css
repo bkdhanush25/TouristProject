@@ -247,3 +247,24 @@ span.bold {
     position: relative;
     bottom: 10px;
 }
+h1{
+    text-align: center;
+}
+.contact-content{
+    display: flex-col;
+}
+
+.mail,.facebook,.twitter,.linkedin{
+    display: flex;
+}
+.contact-container{
+    background-color: white;
+}
+.qr{
+    width: 100px;
+}
+
+.contact-img{
+    width:200px;
+    justify-content: center;
+}
